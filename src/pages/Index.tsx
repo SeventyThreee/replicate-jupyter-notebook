@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import JupyterHeader from '@/components/JupyterHeader';
 import JupyterMenu from '@/components/JupyterMenu';
 import JupyterToolbar from '@/components/JupyterToolbar';
@@ -44,6 +44,9 @@ p.grid.visible = False
 
 r, bins = p.hexbin(x, y, size=0.5, hover_color="pink", hover_alpha=0.8)`;
 
+  // Track which cell is active (for keyboard focus purposes)
+  const [activeCellIndex, setActiveCellIndex] = useState(1);
+
   return (
     <div className="min-h-screen flex flex-col bg-white">
       <JupyterHeader />
@@ -53,15 +56,30 @@ r, bins = p.hexbin(x, y, size=0.5, hover_color="pink", hover_alpha=0.8)`;
       <div className="flex-1 px-4 py-2 overflow-y-auto">
         <CodeCell cellNumber={0} code={titleCode} cellType="markdown" />
         
-        <CodeCell cellNumber={1} code={cell1Code} cellType="code" isActive={true} />
+        <CodeCell 
+          cellNumber={1} 
+          code={cell1Code} 
+          cellType="code" 
+          isActive={activeCellIndex === 1} 
+        />
         
         <CodeCell cellNumber={0} code={plotlyTitle} cellType="markdown" />
         
-        <CodeCell cellNumber={2} code={cell2Code} cellType="code" />
+        <CodeCell 
+          cellNumber={2} 
+          code={cell2Code} 
+          cellType="code" 
+          isActive={activeCellIndex === 2} 
+        />
         
         <CodeCell cellNumber={0} code={bokehTitle} cellType="markdown" />
         
-        <CodeCell cellNumber={3} code={cell3Code} cellType="code" />
+        <CodeCell 
+          cellNumber={3} 
+          code={cell3Code} 
+          cellType="code" 
+          isActive={activeCellIndex === 3} 
+        />
       </div>
     </div>
   );
