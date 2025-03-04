@@ -103,11 +103,11 @@
 
 @layer components {
   .jupyter-cell {
-    @apply border border-jupyter-cellborder rounded-sm my-1 w-full;
+    @apply border border-jupyter-cellborder rounded-sm my-1 w-full transition-colors duration-200;
   }
   
   .jupyter-cell-active {
-    @apply border-l-4 border-l-jupyter-activecell;
+    @apply border-l-4 border-l-blue-500 border-t-blue-500 border-r-blue-500 border-b-blue-500;
   }
   
   .jupyter-toolbar-button {

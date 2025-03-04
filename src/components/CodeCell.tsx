@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 
 interface CodeCellProps {
@@ -6,6 +5,8 @@ interface CodeCellProps {
   code: string;
   cellType: 'code' | 'markdown';
   isActive?: boolean;
+  onFocus?: () => void;
+  onAltEnter?: () => void;
 }
 
 const formatCode = (code: string) => {
@@ -51,13 +52,21 @@ const formatCode = (code: string) => {
   });
 };
 
-const CodeCell: React.FC<CodeCellProps> = ({ cellNumber, code: initialCode, cellType, isActive = false }) => {
+const CodeCell: React.FC<CodeCellProps> = ({ 
+  cellNumber, 
+  code: initialCode, 
+  cellType, 
+  isActive = false,
+  onFocus,
+  onAltEnter
+}) => {
   const [code, setCode] = useState(initialCode);
   const [isEditing, setIsEditing] = useState(false);
 
   const handleDoubleClick = () => {
     if (cellType === 'code') {
       setIsEditing(true);
+      if (onFocus) onFocus();
     }
   };
 
@@ -74,10 +83,23 @@ const CodeCell: React.FC<CodeCellProps> = ({ cellNumber, code: initialCode, cell
     if (e.key === 'Enter' && e.shiftKey) {
       setIsEditing(false);
     }
+    
+    // If Alt+Enter is pressed, create a new cell below
+    if (e.key === 'Enter' && e.altKey) {
+      e.preventDefault();
+      if (onAltEnter) onAltEnter();
+    }
+  };
+
+  const handleCellFocus = () => {
+    if (onFocus) onFocus();
   };
 
   return (
-    <div className={`jupyter-cell ${isActive ? 'jupyter-cell-active' : ''}`}>
+    <div 
+      className={`jupyter-cell ${isActive ? 'jupyter-cell-active' : ''}`}
+      onClick={handleCellFocus}
+    >
       <div className="flex">
         <div className="w-14 bg-gray-100 text-gray-500 p-2 text-right font-mono text-sm">
           {cellType === 'code' ? `In [${cellNumber}]:` : ''}
