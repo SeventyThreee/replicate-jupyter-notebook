@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -96,6 +97,60 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-white text-foreground m-0 p-0;
+  }
+}
+
+@layer components {
+  .jupyter-cell {
+    @apply border border-jupyter-cellborder rounded-sm my-1 w-full;
+  }
+  
+  .jupyter-cell-active {
+    @apply border-l-4 border-l-jupyter-activecell;
+  }
+  
+  .jupyter-toolbar-button {
+    @apply flex items-center justify-center w-9 h-9 hover:bg-gray-200 transition-colors duration-200;
+  }
+  
+  .jupyter-dropdown {
+    @apply bg-white border border-jupyter-border shadow-md rounded-sm py-1 mt-1 z-50;
+  }
+  
+  .jupyter-dropdown-item {
+    @apply px-4 py-1 hover:bg-gray-100 cursor-pointer;
+  }
+  
+  .code-keyword {
+    @apply text-jupyter-green-keyword font-bold;
+  }
+  
+  .code-string {
+    @apply text-jupyter-green-string;
+  }
+  
+  .code-number {
+    @apply text-blue-700;
+  }
+  
+  .code-comment {
+    @apply text-gray-500 italic;
+  }
+  
+  .code-import {
+    @apply text-jupyter-code-green;
+  }
+  
+  .code-from {
+    @apply text-jupyter-code-green;
+  }
+  
+  .code-as {
+    @apply text-jupyter-code-green;
+  }
+  
+  .code-variable {
+    @apply text-jupyter-code-blue;
   }
 }

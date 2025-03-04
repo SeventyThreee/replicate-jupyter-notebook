@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -18,7 +19,31 @@ export default {
 			}
 		},
 		extend: {
+			fontFamily: {
+				mono: ['Menlo', 'Monaco', 'Consolas', '"Liberation Mono"', '"Courier New"', 'monospace'],
+			},
 			colors: {
+				jupyter: {
+					blue: '#4E7AAA',
+					orange: '#E46E2E',
+					gray: '#F6F6F7',
+					darkgray: '#403E43',
+					menubar: '#F7F7F7',
+					toolbar: '#EAEAEA',
+					border: '#DDDDDD',
+					cellborder: '#CFCFCF',
+					activecell: '#42A5F5',
+					green: {
+						keyword: '#008000',
+						string: '#BA2121',
+					},
+					code: {
+						purple: '#7A4579',
+						red: '#D56073',
+						blue: '#4C71C7',
+						green: '#008000',
+					},
+				},
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
 				ring: 'hsl(var(--ring))',
@@ -84,11 +109,21 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'fade-in': {
+					'0%': { opacity: '0' },
+					'100%': { opacity: '1' }
+				},
+				'fade-out': {
+					'0%': { opacity: '1' },
+					'100%': { opacity: '0' }
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'fade-in': 'fade-in 0.3s ease-out',
+				'fade-out': 'fade-out 0.3s ease-out'
 			}
 		}
 	},
