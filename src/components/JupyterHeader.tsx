@@ -8,9 +8,9 @@ const JupyterHeader: React.FC = () => {
         <div className="flex items-center">
           {/* Updated Jupyter logo using the uploaded image */}
           <img 
-            src="/lovable-uploads/82001a6a-6f9f-4ae2-8731-f216f1d446d5.png" 
+            src="/lovable-uploads/b3aaa3d3-36e9-4cf3-b061-22d410818848.png" 
             alt="Jupyter Logo" 
-            className="h-8 w-auto"
+            className="h-10 w-auto"
           />
           <h1 className="ml-3 text-xl font-semibold">jupyter</h1>
           <h1 className="ml-2 text-xl">jupyter-interactive-visualization</h1>

@@ -54,18 +54,6 @@ const JupyterToolbar: React.FC = () => {
           <option>Code</option>
           <option>Raw</option>
         </select>
-        
-        <button className="jupyter-toolbar-button ml-2" title="Command Mode">
-          <div className="w-5 h-5 bg-gray-300 rounded-sm"></div>
-        </button>
-        
-        <button className="jupyter-toolbar-button" title="Edit Mode">
-          <div className="w-5 h-5 flex items-center justify-center">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M12 4L19 20L12 16L5 20L12 4Z" stroke="#4285F4" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </div>
-        </button>
       </div>
     </div>
   );
