@@ -12,11 +12,11 @@ const JupyterHeader: React.FC = () => {
             alt="Jupyter Logo" 
             className="h-10 w-auto"
           />
-          <h1 className="ml-2 text-xl">jupyter-interactive-visualization</h1>
+          <span className="ml-2 text-xl">exam</span>
+          <span className="ml-2 text-gray-600">Last Checkpoint: 39 minutes ago</span>
         </div>
       </div>
       <div className="flex items-center gap-2">
-        <div className="text-sm text-gray-500">Last Checkpoint: 3 minutes ago (autosaved)</div>
         <div className="flex items-center">
           {/* Python logo */}
           <svg className="h-6 w-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
