@@ -1,7 +1,29 @@
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 const JupyterHeader: React.FC = () => {
+  const [elapsedTime, setElapsedTime] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setElapsedTime(prev => {
+        // Reset to 0 after reaching 59 minutes (3540 seconds)
+        return prev >= 3540 ? 0 : prev + 1;
+      });
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
+
+  const formatElapsedTime = (seconds: number): string => {
+    if (seconds < 60) {
+      return `${seconds} second${seconds !== 1 ? 's' : ''} ago`;
+    } else {
+      const minutes = Math.floor(seconds / 60);
+      return `${minutes} minute${minutes !== 1 ? 's' : ''} ago`;
+    }
+  };
+
   return (
     <div className="flex items-center justify-between px-4 py-2 border-b border-jupyter-border">
       <div className="flex items-center space-x-2">
@@ -13,7 +35,7 @@ const JupyterHeader: React.FC = () => {
             className="h-10 w-auto"
           />
           <span className="ml-2 text-xl">exam</span>
-          <span className="ml-2 text-gray-600">Last Checkpoint: 39 minutes ago</span>
+          <span className="ml-2 text-gray-600">Last Checkpoint: {formatElapsedTime(elapsedTime)}</span>
         </div>
       </div>
       <div className="flex items-center gap-2">
